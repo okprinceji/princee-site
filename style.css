@@ -1,0 +1,1369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050606;
+    color: #f5f5f5;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+.global-mouse-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(229, 9, 20, 0.22) 0%, rgba(229, 9, 20, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none; /* Mouse clicks me koi rukawat nahi aayegi */
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+    z-index: 9999; /* Sabhi content ke upar ya background ke hisab se set kar le */
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(180px);
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.glow-1 {
+    background: #ff0000;
+    top: -250px;
+    left: -250px;
+}
+
+.glow-2 {
+    background: #5b0000;
+    right: -300px;
+    top: 300px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 90px;
+    width: 100%;
+    padding: 0 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(5, 6, 6, 0.75);
+
+    backdrop-filter: blur(15px);
+
+    position: fixed;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logo-box {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2626,
+            #5d0000
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 0, 0, 0.4);
+
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #a5a5a5;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-button,
+.primary-button {
+    text-decoration: none;
+
+    padding: 14px 25px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2929,
+            #a50000
+        );
+
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 35px rgba(255, 0, 0, 0.25);
+
+    transition: 0.3s;
+}
+
+.nav-button:hover,
+.primary-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 45px rgba(255, 0, 0, 0.4);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding:
+        170px 6%
+        100px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr 0.75fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+    position: relative;
+}
+
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(100, 0, 0, 0.35),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+
+    color: #ff5959;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+
+.hero h1 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(70px, 9vw, 160px);
+
+    line-height: 0.88;
+
+    font-weight: 500;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 35px;
+}
+
+.hero h1 span {
+    display: block;
+}
+
+
+.hero-description {
+
+    max-width: 750px;
+
+    color: #a8a8a8;
+
+    font-size: 21px;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+.hero-description strong {
+    color: white;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.secondary-button {
+
+    padding: 14px 25px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    background:
+        rgba(255, 255, 255, 0.03);
+
+    transition: 0.3s;
+}
+
+.secondary-button:hover {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.hero-tags {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.hero-tags span {
+
+    padding:
+        10px 16px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid
+        rgba(255, 0, 0, 0.35);
+
+    background:
+        rgba(80, 0, 0, 0.15);
+
+    color: #cfcfcf;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   HERO CARD
+========================= */
+
+/* Card ko relative karna zaroori hai taaki particles card ke andar hi rahein */
+.visual-card {
+    position: relative;
+    overflow: hidden; /* Particles card ke bahar na niklein */
+}
+
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Isse mouse clicks block nahi honge */
+    z-index: 1;
+}
+
+/* Alag-alag dots ki styling aur animation */
+.particle {
+    position: absolute;
+    background: rgba(229, 9, 20, 0.6); /* Red glowing dots */
+    border-radius: 50%;
+    animation: floatUp 6s infinite linear;
+}
+
+/* Alag-alag size aur position ke liye particles set kar rahe hain */
+.particle:nth-child(1) { width: 4px; height: 4px; left: 15%; animation-duration: 5s; animation-delay: 0s; }
+.particle:nth-child(2) { width: 3px; height: 3px; left: 45%; animation-duration: 7s; animation-delay: 2s; }
+.particle:nth-child(3) { width: 5px; height: 5px; left: 75%; animation-duration: 6s; animation-delay: 1s; }
+.particle:nth-child(4) { width: 2px; height: 2px; left: 85%; animation-duration: 8s; animation-delay: 3s; }
+.particle:nth-child(5) { width: 4px; height: 4px; left: 30%; animation-duration: 6.5s; animation-delay: 1.5s; }
+
+/* Floating animation jo niche se upar ki taraf jayegi */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100px) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-300px) scale(1.2);
+        opacity: 0;
+    }
+}
+.hero-visual {
+    position: relative;
+}
+
+.visual-card {
+    padding: 25px;
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        rgba(30, 30, 30, 0.95),
+        rgba(10, 10, 10, 0.9)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Purane shadow ke sath red glow add kar diya hai */
+    box-shadow: 
+        0 30px 100px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(189, 23, 31, 0.152), 
+        inset 0 1px rgba(255, 255, 255, 0.05);
+    
+    transition: 0.3s ease;
+}
+
+.visual-card:hover {
+    border-color: rgba(229, 9, 20, 0.4);
+    box-shadow: 
+        0 30px 100px rgba(0, 0, 0, 0.6),
+        0 0 55px rgba(229, 9, 20, 0.35), 
+        inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+
+.status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    font-weight: 700;
+}
+
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #27d980;
+
+    box-shadow:
+        0 0 12px
+        #27d980;
+}
+
+
+.profile-preview {
+
+    margin-top: 18px;
+
+    padding: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+}
+
+.profile-image {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(
+        135deg,
+        #ff2a2a,
+        transparent
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Yeh naya add karna hai taaki image andar fit ho aur gol rahe */
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Hover effect */
+.profile-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
+}
+
+.profile-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2c0000,
+            #111
+        );
+
+    font-weight: 800;
+}
+
+
+.profile-preview h2 {
+    font-size: 21px;
+}
+
+.profile-preview p {
+
+    color: #9c9c9c;
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+
+    margin-top: 5px;
+}
+
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.stat-card {
+    padding: 22px;
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(80, 10, 10, 0.35),
+            rgba(255, 255, 255, 0.03)
+        );
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+    
+    /* Smooth animation ke liye transition add kiya hai */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- Yeh raha hover effect (Pop-up + Glow) --- */
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 127, 134, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 134, 140, 0.22),
+                inset 0 1px rgba(218, 24, 24, 0.1);
+}
+
+.stat-card h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    color: #999;
+    font-size: 13px;
+}
+
+.bottom-preview {
+
+    margin-top: 15px;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    background: #080808;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+.bottom-preview span {
+
+    color: #4dbfff;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.bottom-preview h3 {
+
+    margin-top: 12px;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+section {
+    padding:
+        120px 6%;
+}
+
+.section-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 40px;
+
+    margin-bottom: 60px;
+}
+
+
+.section-heading h2,
+.contact-section h2,
+.about-content h2 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(42px, 5vw, 80px);
+
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+.section-heading h2 span,
+.contact-section h2 span,
+.about-content h2 span {
+    color: #ff2b2b;
+}
+
+
+.section-description {
+
+    max-width: 400px;
+
+    color: #929292;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   WORK
+========================= */
+
+.work-section {
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.work-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+.work-card {
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    background: #0a0a0a;
+
+    transition: 0.4s;
+}
+
+
+.work-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255,0,0,0.4);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,0.5);
+}
+
+.work-card {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Ensure karega ki content upar se niche flow ho, ya agar side-by-side hai toh control me rahe */
+    background: #070707;
+    border-radius: 16px;
+    overflow: hidden; /* Yeh sabse zaroori hai - jo bhi cheez box se bahar jayegi wo hide ho jayegi */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-image {
+    height: 360px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Image/Video ko andar lock karne ke liye */
+}
+
+.work-card:not(.large) .work-image {
+    height: 260px;
+}
+
+/* Video ya Image jo card ke andar hai uski sizing fix karne ke liye */
+.work-image img,
+.work-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.image-two {
+
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #4a0000
+        );
+}
+
+.image-three {
+    height: 260px; /* Agar height alag hai toh apne hisab se adjust kar sakte ho */
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Yeh content ko box ke andar lock kar dega */
+    background:
+        linear-gradient(
+            135deg,
+            #220000,
+            #000
+        );
+}
+
+/* 3rd box ke andar ki video ya image ke liye */
+.image-three img,
+.image-three video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.play-button {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* Jab video play hogi toh JS is class ko add kar dega aur button gayab ho jayega */
+.play-button.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.work-card:hover .play-button {
+
+    background: #ed0f0f;
+
+    box-shadow:
+        0 0 35px
+        rgba(252, 31, 31, 0.6);
+
+    transform: scale(1.1);
+}
+
+
+.project-number {
+
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    font-size: 13px;
+
+    color: #aaa;
+}
+
+
+.work-info {
+
+    padding: 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.work-info p {
+
+    color: #ffbcbc;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+.work-info h3 {
+    font-size: 18px;
+}
+
+
+.work-info > span {
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services {
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.center-heading {
+
+    display: block;
+
+    text-align: center;
+}
+
+
+.service-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.service-card {
+
+    padding: 40px;
+
+    min-height: 280px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.04),
+            rgba(255,0,0,0.03)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+}
+
+
+.service-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(255, 0, 0, 0.453);
+}
+
+
+.service-number {
+
+    color: #ff3838;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.service-card h3 {
+
+    font-size: 28px;
+
+    margin:
+        40px 0
+        15px;
+}
+
+
+.service-card p {
+
+    color: #999;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-section {
+
+    display: grid;
+
+    grid-template-columns:
+        0.4fr 1.6fr;
+
+    gap: 60px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.about-number {
+
+    font-size: 15vw;
+
+    color:
+        rgba(255,255,255,0.03);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    line-height: 0.8;
+}
+
+
+.about-content {
+
+    max-width: 850px;
+}
+
+
+.about-content > p:not(.eyebrow) {
+
+    color: #9c9c9c;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    margin:
+        35px 0;
+}
+
+
+.text-link {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    padding-bottom: 8px;
+
+    border-bottom:
+        1px solid hsl(0, 100%, 83%);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.contact-section h2 {
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+.contact-section > p:not(.eyebrow) {
+
+    max-width: 600px;
+
+    margin:
+        30px auto;
+
+    color: #999;
+
+    line-height: 1.7;
+}
+
+
+.contact-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    position: relative;
+}
+
+
+.contact-glow {
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    background: #700000;
+
+    filter: blur(180px);
+
+    opacity: 0.3;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 30px 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+.footer-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: 700;
+}
+
+
+footer p {
+
+    color: #666;
+
+    font-size: 13px;
+}
+
+
+.footer-links {
+
+    display: flex;
+
+    gap: 18px;
+}
+
+
+.footer-links a {
+
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 60px;
+    }
+
+
+    .work-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .work-card.large {
+
+        grid-column:
+            span 2;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+
+    .nav-links {
+        display: none;
+    }
+
+
+    .nav-button {
+        padding: 11px 16px;
+    }
+
+
+    .hero {
+        padding:
+            140px 20px
+            80px;
+    }
+
+
+    section {
+        padding:
+            90px 20px;
+    }
+
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+
+    .hero-description {
+        font-size: 17px;
+    }
+
+
+    .section-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .work-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .work-card.large {
+
+        grid-column:
+            auto;
+    }
+
+
+    .service-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .about-section {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .about-number {
+        display: none;
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}.contact-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.contact-buttons a {
+    text-decoration: none; /* Underline hatane ke liye */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+/* Red WhatsApp Button */
+.red-btn {
+    background: #e50914;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+}
+
+/* Dark Instagram Button */
+.insta-btn {
+    background: #141414;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-buttons a:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}.footer-links {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: #b3b3b3; /* Normal color */
+    text-decoration: none; /* Underline hatane ke liye */
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff; /* Hover karne par white ho jayega */
+}
